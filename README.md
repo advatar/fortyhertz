@@ -7,6 +7,6 @@ An app according to the princples devised by this study: [Brain wave stimulation
 ### Building
 `open 40hz.xcodeproj`
 
-[![Watch the video](https://github.com/advatar/fortyhertz/raw/master/40hz.png)](https://github.com/advatar/fortyhertz/raw/master/screencast.m4v)
+[![Watch the video](https://github.com/advatar/fortyhertz/raw/master/40hz.png | width=300 )](https://github.com/advatar/fortyhertz/raw/master/screencast.m4v)
 
 
