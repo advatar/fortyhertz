@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 public enum FortyHertzAudioMode {
     case iso // mono
@@ -20,7 +21,12 @@ public class FortyHertzController {
     var toneGenerator: ToneGeneratorController?
     var isPlaying = false
     var flashView: UIView!
-
+    let device = AVCaptureDevice.default(for: .video)
+    var timerSpeed: Double = 0.0
+    var onTime:Double = 0.0125
+    var offTime:Double = 0.0125
+    var onTimer: Timer?
+    var offTimer: Timer?
     init(on view: UIView, mode: FortyHertzAudioMode) {
 
         if mode == .iso {
@@ -41,7 +47,7 @@ public class FortyHertzController {
 
 
     func start() {
-        flashView.alpha = 1.0
+        //flashView.alpha = 1.0
     }
 
     func reset() {
@@ -58,8 +64,73 @@ public class FortyHertzController {
         animation.autoreverses = true
         animation.repeatCount = Float.greatestFiniteMagnitude
         flashView.layer.add(animation, forKey: "opacity")
-      }
+    }
 
+    @objc func lightOn() {
+        if let device = device, device.hasTorch {
+            do {
+                try device.lockForConfiguration()
+                    try device.setTorchModeOn(level: AVCaptureDevice.maxAvailableTorchLevel)
+                device.unlockForConfiguration()
+                //offTimer?.invalidate()
+                onTimer = Timer.scheduledTimer(timeInterval: onTime, target: self, selector: #selector(lightOff), userInfo: nil, repeats: false)
+            } catch {
+                print(error)
+            }
+        }
+    }
+
+    @objc func lightOff() {
+        if let device = device, device.hasTorch {
+            do {
+                try device.lockForConfiguration()
+                    try device.setTorchModeOn(level: 0.5)
+                device.unlockForConfiguration()
+                //onTimer?.invalidate()
+                offTimer = Timer.scheduledTimer(timeInterval: onTime, target: self, selector: #selector(lightOn), userInfo: nil, repeats: false)
+            } catch {
+                print(error)
+            }
+        }
+    }
+
+    func turnOn() {
+        if let device = device, device.hasTorch {
+            do {
+                try device.lockForConfiguration()
+                    device.torchMode = .on
+                device.unlockForConfiguration()
+                onTimer?.invalidate()
+                offTimer?.invalidate()
+            } catch {
+                print(error)
+            }
+        }
+    }
+
+    func turnOff() {
+        if let device = device, device.hasTorch {
+            do {
+                try device.lockForConfiguration()
+                    device.torchMode = .off
+                device.unlockForConfiguration()
+                onTimer?.invalidate()
+                offTimer?.invalidate()
+            } catch {
+                print(error)
+            }
+        }
+    }
+
+    func strobe(isOn: Bool) {
+        switch isOn {
+        case true:
+            turnOn()
+            lightOn()
+        case false:
+            turnOff()
+        }
+    }
 
     func tooglePlay() {
         isPlaying = !isPlaying
@@ -68,9 +139,10 @@ public class FortyHertzController {
         } else if let toneGenerator = toneGenerator {
             toneGenerator.togglePlay()
         }
+        self.strobe(isOn: isPlaying)
         if isPlaying {
             self.start()
-            self.blink()
+            //self.blink()
         } else {
             self.reset()
         }
