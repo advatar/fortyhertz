@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0427CD3E228FFDBE000E131D /* FortyHzController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0427CD3D228FFDBE000E131D /* FortyHzController.swift */; };
 		046F568A228F2A2900A417E0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 046F5689228F2A2900A417E0 /* README.md */; };
 		048CDE47228EF3B7005BC9D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048CDE46228EF3B7005BC9D4 /* AppDelegate.swift */; };
 		048CDE49228EF3B7005BC9D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048CDE48228EF3B7005BC9D4 /* ViewController.swift */; };
@@ -15,10 +16,10 @@
 		048CDE51228EF3B9005BC9D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 048CDE4F228EF3B9005BC9D4 /* LaunchScreen.storyboard */; };
 		048CDE60228EF44E005BC9D4 /* ToneGeneratorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048CDE5A228EF44E005BC9D4 /* ToneGeneratorController.m */; };
 		048CDE61228EF44E005BC9D4 /* IsoGeneratorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 048CDE5C228EF44E005BC9D4 /* IsoGeneratorController.m */; };
-		048CDE64228EFE86005BC9D4 /* Binaural.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048CDE63228EFE86005BC9D4 /* Binaural.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0427CD3D228FFDBE000E131D /* FortyHzController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FortyHzController.swift; sourceTree = "<group>"; };
 		046F5689228F2A2900A417E0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		048CDE43228EF3B7005BC9D4 /* 40hz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 40hz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		048CDE46228EF3B7005BC9D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -32,7 +33,6 @@
 		048CDE5B228EF44E005BC9D4 /* ToneGeneratorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToneGeneratorController.h; sourceTree = "<group>"; };
 		048CDE5C228EF44E005BC9D4 /* IsoGeneratorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IsoGeneratorController.m; sourceTree = "<group>"; };
 		048CDE5D228EF44E005BC9D4 /* IsoGeneratorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IsoGeneratorController.h; sourceTree = "<group>"; };
-		048CDE63228EFE86005BC9D4 /* Binaural.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binaural.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +66,7 @@
 		048CDE45228EF3B7005BC9D4 /* 40hz */ = {
 			isa = PBXGroup;
 			children = (
+				0427CD3D228FFDBE000E131D /* FortyHzController.swift */,
 				048CDE58228EF402005BC9D4 /* binaural */,
 				048CDE46228EF3B7005BC9D4 /* AppDelegate.swift */,
 				048CDE48228EF3B7005BC9D4 /* ViewController.swift */,
@@ -73,7 +74,6 @@
 				048CDE4D228EF3B9005BC9D4 /* Assets.xcassets */,
 				048CDE4F228EF3B9005BC9D4 /* LaunchScreen.storyboard */,
 				048CDE52228EF3B9005BC9D4 /* Info.plist */,
-				048CDE63228EFE86005BC9D4 /* Binaural.swift */,
 			);
 			path = 40hz;
 			sourceTree = "<group>";
@@ -165,9 +165,9 @@
 			files = (
 				048CDE61228EF44E005BC9D4 /* IsoGeneratorController.m in Sources */,
 				048CDE49228EF3B7005BC9D4 /* ViewController.swift in Sources */,
+				0427CD3E228FFDBE000E131D /* FortyHzController.swift in Sources */,
 				048CDE47228EF3B7005BC9D4 /* AppDelegate.swift in Sources */,
 				048CDE60228EF44E005BC9D4 /* ToneGeneratorController.m in Sources */,
-				048CDE64228EFE86005BC9D4 /* Binaural.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

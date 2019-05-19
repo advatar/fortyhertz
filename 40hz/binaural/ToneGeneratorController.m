@@ -69,27 +69,6 @@ OSStatus RenderTone(
 @implementation ToneGeneratorController
 
 
--(void) ChangeFrequencies
-{
-    //round carrier slider to only use two decimal places
-    self.carrierFrequency = roundf(self.carrierFrequency * 100) / 100;
-    
-    //round binaural to only use two decimal places
-    self.binauralFrequency = roundf(self.binauralFrequency * 100) / 100;
-    
-    //check for out of range and adjust accordingly
-    if (self.carrierFrequency - (self.binauralFrequency / 2) < .1)
-    {
-        self.carrierFrequency = (self.binauralFrequency / 2) + .1;
-    }
-    
-    leftFrequency = self.carrierFrequency - (self.binauralFrequency / 2);
-    rightFrequency = self.carrierFrequency + (self.binauralFrequency / 2);
-    amplitude = 0.75 * .25;
-    //NSLog(@" %f %f\n", leftFrequency, rightFrequency);
-
-}
-
 - (void)createToneUnit
 {
 	// Configure the search parameters to find the default playback output unit
@@ -158,7 +137,6 @@ OSStatus RenderTone(
     else
     {
         [self createToneUnit];
-        
         // Stop changing parameters on the unit
         OSErr err = AudioUnitInitialize(toneUnit);
         NSAssert1(err == noErr, @"Error initializing unit: %ld", (long)err);
@@ -189,7 +167,21 @@ OSStatus RenderTone(
     [[AVAudioSession sharedInstance] setActive: YES error: nil];
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     
-    [self ChangeFrequencies];
+    //round carrier slider to only use two decimal places
+    _carrierFrequency = roundf(_carrierFrequency * 100) / 100;
+
+    //round binaural to only use two decimal places
+    _binauralFrequency = roundf(_binauralFrequency * 100) / 100;
+
+    //check for out of range and adjust accordingly
+    if (_carrierFrequency - (_binauralFrequency / 2) < .1)
+    {
+        _carrierFrequency = (_binauralFrequency / 2) + .1;
+    }
+
+    leftFrequency  = _carrierFrequency - (_binauralFrequency / 2);
+    rightFrequency = _carrierFrequency + (_binauralFrequency / 2);
+    amplitude = 0.25;
 
 }
 

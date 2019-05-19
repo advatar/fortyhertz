@@ -206,7 +206,8 @@ OSStatus RenderIso(
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
     [[AVAudioSession sharedInstance] setActive: YES error: nil];
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
-    
+    amplitude = 0.25;
+
     [self ChangeCarrierFrequency];
     [self ChangeBinauralFrequency];
  }
