@@ -84,7 +84,7 @@ public class FortyHertzController {
         if let device = device, device.hasTorch {
             do {
                 try device.lockForConfiguration()
-                    try device.setTorchModeOn(level: 0.5)
+                    try device.setTorchModeOn(level: 0.1)
                 device.unlockForConfiguration()
                 //onTimer?.invalidate()
                 offTimer = Timer.scheduledTimer(timeInterval: onTime, target: self, selector: #selector(lightOn), userInfo: nil, repeats: false)
