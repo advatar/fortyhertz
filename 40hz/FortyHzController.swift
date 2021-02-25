@@ -47,7 +47,7 @@ public class FortyHertzController {
 
 
     func start() {
-        //flashView.alpha = 1.0
+        flashView.alpha = 1.0
     }
 
     func reset() {
@@ -142,7 +142,7 @@ public class FortyHertzController {
         self.strobe(isOn: isPlaying)
         if isPlaying {
             self.start()
-            //self.blink()
+            self.blink()
         } else {
             self.reset()
         }
